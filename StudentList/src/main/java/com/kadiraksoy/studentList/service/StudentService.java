@@ -29,16 +29,16 @@ public class StudentService {
     }
 
 
-    public void deleteStudent(int number){
+    public void deleteStudent(String number){
         studentRepository.deleteByNumber(number);
     }
 
-    public Student getByNumber(int number) {
+    public Student getByNumber(String number) {
         return studentRepository.findByNumber(number)
                 .orElseThrow();
     }
 
-    public void updateStudent(int number, Student newStudent){
+    public void updateStudent(String number, Student newStudent){
         Student oldStudent = getByNumber(number);
         oldStudent.setName(newStudent.getName());
         oldStudent.setEmail(newStudent.getEmail());
