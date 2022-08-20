@@ -20,23 +20,23 @@ public class StudentController {
     private final StudentService studentService;
 
     @GetMapping
-    public ResponseEntity<List<Student>> getStudents(@RequestParam(required = false) int number){
+    public ResponseEntity<List<Student>> getStudents(@RequestParam(required = false) String number){
         return new ResponseEntity<>(studentService.getStudents(number), HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<Student> createStudent(@PathVariable int number, @RequestBody Student newStudent){
+    public ResponseEntity<Student> createStudent(@PathVariable String number, @RequestBody Student newStudent){
         return new ResponseEntity<>(studentService.createStudent(newStudent),HttpStatus.CREATED);
     }
 
     @PutMapping("/{number}")
-    public ResponseEntity<Void> upgradeStudent(@PathVariable int number, @RequestBody Student newStudent){
+    public ResponseEntity<Void> upgradeStudent(@PathVariable String number, @RequestBody Student newStudent){
         studentService.updateStudent(number, newStudent);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping("/{number}")
-    public  ResponseEntity<Void> deleteStudent(@PathVariable int number){
+    public  ResponseEntity<Void> deleteStudent(@PathVariable String number){
         studentService.deleteStudent(number);
         return new ResponseEntity<>(HttpStatus.OK);
     }
