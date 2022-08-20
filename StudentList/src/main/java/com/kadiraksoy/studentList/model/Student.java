@@ -12,7 +12,7 @@ import org.springframework.data.annotation.Id;
 
 public class Student {
     @Id
-    int number;
+    String number;
 
     String name;
 
